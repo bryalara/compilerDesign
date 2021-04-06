@@ -1,0 +1,3 @@
+begin
+A := C + 2B ** 2 M;
+end
