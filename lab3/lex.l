@@ -18,6 +18,7 @@ struct Symbol_table{
     char* symbol_value;
     char sym_type[8];
 } ST;
+
 struct Symbol_table *sym_table = &ST;
 void add_symbol(struct Symbol_table *st, char* ch, int check);
 struct Symbol_table* search_symbol(struct Symbol_table *st, char* ch);
@@ -27,13 +28,17 @@ struct Error_list{
     struct Error_list* next_error;
     char* error_text;
 } EL;
+
 struct Error_list *err_list = &EL;
 void add_error(struct Error_list *el, char* ch);
 void print_EL();
+
 %}
+
 
 NUM     [0-9]
 ID      [a-zA-Z][a-zA-z0-9]*
+
 
 %%
 
@@ -96,6 +101,7 @@ printf("Number of tokenized lines outputted "
 print_EL();
 return 0;
 }
+
 void add_symbol(struct Symbol_table *st, char* ch, int check){
     if(check==1){
         snprintf(buffer, sizeof(buffer),"ERROR: In line %d:\"%s\" not a valid symbol type, must be integer. Symbol type for preceding identifier set to integer", num_lines, yytext); 
